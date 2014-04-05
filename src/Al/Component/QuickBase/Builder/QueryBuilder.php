@@ -1,32 +1,16 @@
 <?php
 
-namespace Al\Component\QuickBase\Query;
+namespace Al\Component\QuickBase\Builder;
 
-class QueryBuilder
+use Al\Component\QuickBase\Builder\Query\Criteria;
+
+class QueryBuilder extends AbstractBuilder
 {
-    /**
-     * @var Query
-     */
-    private $query = null;
+    const OPERATOR_AND = 'AND';
+    const OPERATOR_OR = 'OR';
 
-    /**
-     * @param $action
-     * @return $this
-     */
-    public function createQuery($action)
-    {
-        $this->query = new Query($action);
-
-        return $this;
-    }
-
-    /**
-     * @return Query
-     */
-    public function getQuery()
-    {
-        return $this->query;
-    }
+    const SORT_ASC = 'sortorder-A';
+    const SORT_DESC = 'sortorder-D';
 
     /**
      * Makes the query result structured or not
@@ -36,7 +20,7 @@ class QueryBuilder
      */
     public function isStructured($structured = true)
     {
-        $structured ? $this->query->addParameter('fmt', 'structured') : $this->query->clearParameter('fmt');
+        $structured ? $this->request->addParameter('fmt', 'structured') : $this->request->clearParameter('fmt');
 
         return $this;
     }
@@ -50,9 +34,9 @@ class QueryBuilder
     public function select(array $columns = array())
     {
         if (count($columns) == 0) {
-            $this->query->addParameter('clist', 'a');
+            $this->request->addParameter('clist', 'a');
         } else {
-            $this->query->addParameter('clist', implode('.', $columns));
+            $this->request->addParameter('clist', implode('.', $columns));
         }
 
         return $this;
@@ -66,7 +50,7 @@ class QueryBuilder
      */
     public function where(Criteria $criteria)
     {
-        $this->query->appendToParameter('query', $criteria->toString());
+        $this->request->appendToParameter('query', $criteria->toString());
 
         return $this;
     }
@@ -79,9 +63,9 @@ class QueryBuilder
      */
     public function andWhere(Criteria $criteria)
     {
-        $this->query->appendToParameter(
+        $this->request->appendToParameter(
             'query',
-             Query::OPERATOR_AND . $criteria->toString()
+             self::OPERATOR_AND . $criteria->toString()
         );
 
         return $this;
@@ -95,9 +79,9 @@ class QueryBuilder
      */
     public function orWhere(Criteria $criteria)
     {
-        $this->query->appendToParameter(
+        $this->request->appendToParameter(
             'query',
-            Query::OPERATOR_OR . $criteria->toString()
+            self::OPERATOR_OR . $criteria->toString()
         );
 
         return $this;
@@ -112,7 +96,7 @@ class QueryBuilder
     public function setOffset($offset)
     {
         if (is_integer($offset)) {
-            $this->query->appendToParameter('options', 'skp-' . $offset);
+            $this->request->appendToParameter('options', 'skp-' . $offset);
         }
 
         return $this;
@@ -127,7 +111,7 @@ class QueryBuilder
     public function setLimit($limit)
     {
         if (is_integer($limit)) {
-            $this->query->appendToParameter('options', 'num-' . $limit);
+            $this->request->appendToParameter('options', 'num-' . $limit);
         }
 
         return $this;
@@ -141,8 +125,8 @@ class QueryBuilder
      */
     public function sortBy(array $config)
     {
-        $this->query->addParameter('slist', implode('.', array_keys($config)));
-        $this->query->appendToParameter('options', implode('.', $config));
+        $this->request->addParameter('slist', implode('.', array_keys($config)));
+        $this->request->appendToParameter('options', implode('.', $config));
 
         return $this;
     }

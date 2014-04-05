@@ -1,6 +1,6 @@
 <?php
 
-namespace Al\Component\QuickBase\Query;
+namespace Al\Component\QuickBase\Builder\Query;
 
 class Criteria
 {

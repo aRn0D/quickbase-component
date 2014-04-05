@@ -13,7 +13,7 @@ class CriteriaSpec extends ObjectBehavior
 
     public function it_is_initializable()
     {
-        $this->shouldHaveType('Al\Component\QuickBase\Query\Criteria');
+        $this->shouldHaveType('Al\Component\QuickBase\QueryBuilder\Criteria');
     }
 
     public function it_should_be_transform_as_string()

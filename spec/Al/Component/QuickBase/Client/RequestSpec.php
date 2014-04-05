@@ -1,10 +1,10 @@
 <?php
 
-namespace spec\Al\Component\QuickBase\Query;
+namespace spec\Al\Component\QuickBase\Client;
 
 use PhpSpec\ObjectBehavior;
 
-class QuerySpec extends ObjectBehavior
+class RequestSpec extends ObjectBehavior
 {
     public function let()
     {
@@ -13,7 +13,7 @@ class QuerySpec extends ObjectBehavior
 
     public function it_is_initializable()
     {
-        $this->shouldHaveType('Al\Component\QuickBase\Query\Query');
+        $this->shouldHaveType('Al\Component\QuickBase\Client\Request');
     }
 
     public function it_has_action()

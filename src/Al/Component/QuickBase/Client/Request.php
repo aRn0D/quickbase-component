@@ -1,15 +1,9 @@
 <?php
 
-namespace Al\Component\QuickBase\Query;
+namespace Al\Component\QuickBase\Client;
 
-class Query
+class Request
 {
-    const OPERATOR_AND = 'AND';
-    const OPERATOR_OR = 'OR';
-
-    const SORT_ASC = 'sortorder-A';
-    const SORT_DESC = 'sortorder-D';
-
     /**
      * @var string
      */
