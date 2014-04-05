@@ -1,9 +1,16 @@
 <?php
 
+/*
+ * This file is part of the Quickbase API package.
+ *
+ * (c) Langlade Arnaud
+ *
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
+ */
+
 namespace spec\Al\Component\QuickBase\Builder;
 
-use Al\Component\QuickBase\Client\Client;
-use Al\Component\QuickBase\Query\QueryBuilder;
 use PhpSpec\ObjectBehavior;
 
 class AuthenticationBuilderSpec extends ObjectBehavior
@@ -13,7 +20,7 @@ class AuthenticationBuilderSpec extends ObjectBehavior
         $this->shouldHaveType('Al\Component\QuickBase\Builder\AuthenticationBuilder');
     }
 
-    function it_is_a_builder()
+    public function it_is_a_builder()
     {
         $this->shouldHaveType('Al\Component\QuickBase\Builder\AbstractBuilder');
     }
@@ -34,7 +41,7 @@ class AuthenticationBuilderSpec extends ObjectBehavior
         $this->getRequest()->shouldHaveType('Al\Component\QuickBase\Client\Request');
     }
 
-    function it_username_is_mutable()
+    public function it_username_is_mutable()
     {
         $this->createRequest('action')
             ->setUsername('username')
@@ -45,7 +52,7 @@ class AuthenticationBuilderSpec extends ObjectBehavior
         ));
     }
 
-    function it_password_is_mutable()
+    public function it_password_is_mutable()
     {
         $this->createRequest('action')
             ->setPassword('password')
@@ -56,7 +63,7 @@ class AuthenticationBuilderSpec extends ObjectBehavior
         ));
     }
 
-    function it_ticket_validitiy_is_mutable()
+    public function it_ticket_validitiy_is_mutable()
     {
         $this->createRequest('action')
             ->setTicketValidity(1)
@@ -67,7 +74,7 @@ class AuthenticationBuilderSpec extends ObjectBehavior
         ));
     }
 
-    function it_message_is_mutable()
+    public function it_message_is_mutable()
     {
         $this->createRequest('action')
             ->setMessage('wellcome')

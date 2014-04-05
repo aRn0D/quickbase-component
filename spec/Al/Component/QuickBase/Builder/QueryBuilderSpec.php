@@ -1,5 +1,14 @@
 <?php
 
+/*
+ * This file is part of the Quickbase API package.
+ *
+ * (c) Langlade Arnaud
+ *
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
+ */
+
 namespace spec\Al\Component\QuickBase\Builder;
 
 use Al\Component\QuickBase\Builder\QueryBuilder;
@@ -13,7 +22,7 @@ class QueryBuilderSpec extends ObjectBehavior
         $this->shouldHaveType('Al\Component\QuickBase\Builder\QueryBuilder');
     }
 
-    function it_is_a_builder()
+    public function it_is_a_builder()
     {
         $this->shouldHaveType('Al\Component\QuickBase\Builder\AbstractBuilder');
     }
