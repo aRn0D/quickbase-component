@@ -134,8 +134,10 @@ class QueryBuilder extends AbstractBuilder
      */
     public function sortBy(array $config)
     {
-        $this->request->addParameter('slist', implode('.', array_keys($config)));
-        $this->request->appendToParameter('options', implode('.', $config));
+        if (count($config) > 0) {
+            $this->request->addParameter('slist', implode('.', array_keys($config)));
+            $this->request->appendToParameter('options', implode('.', $config));
+        }
 
         return $this;
     }
