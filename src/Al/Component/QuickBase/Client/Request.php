@@ -19,6 +19,11 @@ class Request
     private $action;
 
     /**
+     * @var string
+     */
+    private $host;
+
+    /**
      * @var array
      */
     private $parameters = array();
@@ -28,6 +33,28 @@ class Request
         $this->action = $action;
     }
 
+    /**
+     * @param string $host
+     * @return $this
+     */
+    public function setHost($host)
+    {
+        $this->host = $host;
+
+        return $this;
+    }
+
+    /**
+     * @return string
+     */
+    public function getHost()
+    {
+        return $this->host;
+    }
+
+    /**
+     * @return string
+     */
     public function getAction()
     {
         return $this->action;
@@ -104,5 +131,10 @@ class Request
         $this->parameters = array();
 
         return $this;
+    }
+
+    public function getBody()
+    {
+        return '';
     }
 }

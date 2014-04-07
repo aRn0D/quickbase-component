@@ -25,6 +25,17 @@ class RequestSpec extends ObjectBehavior
         $this->shouldHaveType('Al\Component\QuickBase\Client\Request');
     }
 
+    public function it_has_no_host_by_default()
+    {
+        $this->getHost()->shouldReturn(null);
+    }
+
+    public function its_host_is_mutable()
+    {
+        $this->setHost('host')->shouldReturn($this);
+        $this->getHost()->shouldReturn('host');
+    }
+
     public function it_has_action()
     {
         $this->getAction()->shouldReturn('action');
@@ -79,5 +90,10 @@ class RequestSpec extends ObjectBehavior
         $this->addParameter('parameter', 'value')->shouldReturn($this);
         $this->clearParameters()->shouldReturn($this);
         $this->getParameters()->shouldReturn(array());
+    }
+
+    public function it_has_body()
+    {
+        $this->getBody();
     }
 }
