@@ -9,7 +9,7 @@ class BuilderFactorySpec extends ObjectBehavior
 {
     function it_is_initializable()
     {
-        $this->shouldHaveType('Al\Component\QuickBase\Builder\Factory\Builder');
+        $this->shouldHaveType('Al\Component\QuickBase\Builder\Factory\BuilderFactory');
     }
 
     function it_is_a_factory()
