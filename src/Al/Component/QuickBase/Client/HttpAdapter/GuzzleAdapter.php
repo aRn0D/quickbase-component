@@ -12,6 +12,7 @@
 namespace Al\Component\QuickBase\Client\HttpAdapter;
 
 use Al\Component\QuickBase\Client\Request;
+use Al\Component\QuickBase\Client\Response;
 use GuzzleHttp\ClientInterface;
 
 class GuzzleAdapter implements HttpAdapterInterface
@@ -24,14 +25,6 @@ class GuzzleAdapter implements HttpAdapterInterface
     function __construct(ClientInterface $client)
     {
         $this->client = $client;
-    }
-
-    /**
-     * {@inheritdoc}
-     */
-    public function getClient()
-    {
-        return $this->client;
     }
 
     /**
@@ -51,6 +44,6 @@ class GuzzleAdapter implements HttpAdapterInterface
             )
         );
 
-        return $response;
+        return new Response($response);
     }
 }

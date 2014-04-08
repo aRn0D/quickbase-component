@@ -33,11 +33,6 @@ class GuzzleAdapterSpec extends ObjectBehavior
         $this->shouldHaveType('Al\Component\QuickBase\Client\HttpAdapter\HttpAdapterInterface');
     }
 
-    function it_have_a_client()
-    {
-        $this->getClient()->shouldHaveType('GuzzleHttp\ClientInterface');
-    }
-
     function it_sends_a_request(Request $request, ClientInterface $client)
     {
         $request->getAction()->shouldBeCalled()->willReturn('action');
