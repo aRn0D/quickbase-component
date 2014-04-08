@@ -36,6 +36,17 @@ class RequestSpec extends ObjectBehavior
         $this->getHost()->shouldReturn('host');
     }
 
+    public function it_has_no_token_by_default()
+    {
+        $this->getToken()->shouldReturn(null);
+    }
+
+    public function its_token_is_mutable()
+    {
+        $this->setToken('token')->shouldReturn($this);
+        $this->getToken()->shouldReturn('token');
+    }
+
     public function it_has_action()
     {
         $this->getAction()->shouldReturn('action');

@@ -24,6 +24,11 @@ class Request
     private $host;
 
     /**
+     * @var string
+     */
+    private $token;
+
+    /**
      * @var array
      */
     private $parameters = array();
@@ -50,6 +55,25 @@ class Request
     public function getHost()
     {
         return $this->host;
+    }
+
+    /**
+     * @param string $token
+     * @return $this
+     */
+    public function setToken($token)
+    {
+        $this->token = $token;
+
+        return $this;
+    }
+
+    /**
+     * @return string
+     */
+    public function getToken()
+    {
+        return $this->token;
     }
 
     /**
