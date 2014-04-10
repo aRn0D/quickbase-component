@@ -1,6 +1,5 @@
 Installation
 ------------
 
-``` bash
-    composer require quickbase/component:0.1.*@dev
-```
+This is just a POC for now. This component will provide a basic quickbase php client.
+
