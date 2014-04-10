@@ -1,12 +1,20 @@
 <?php
 
+/*
+ * This file is part of the Quickbase API package.
+ *
+ * (c) Langlade Arnaud
+ *
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
+ */
+
 namespace spec\Al\Component\QuickBase\Client;
 
-use Al\Component\QuickBase\Builder\AuthenticationBuilder;
-use Al\Component\QuickBase\Builder\Factory\BuilderFactoryInterface;
+use Al\Component\QuickBase\Request\Builder\AuthenticationBuilder;
 use Al\Component\QuickBase\Client\TransportAdapter\TransportAdapterInterface;
-use Al\Component\QuickBase\Client\Request;
-use Al\Component\QuickBase\Client\Response;
+use Al\Component\QuickBase\Request\Request;
+use Al\Component\QuickBase\Response\Response;
 use PhpSpec\ObjectBehavior;
 use Prophecy\Argument;
 
@@ -83,7 +91,7 @@ class ClientSpec extends ObjectBehavior
     }
 
     public function it_sends_request(
-        Request $request,
+        \Al\Component\QuickBase\Request\Request $request,
         TransportAdapterInterface $transportAdapter
     )
     {

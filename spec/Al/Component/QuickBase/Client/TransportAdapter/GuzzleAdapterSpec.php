@@ -11,7 +11,7 @@
 
 namespace spec\Al\Component\QuickBase\Client\TransportAdapter;
 
-use Al\Component\QuickBase\Client\Request;
+use Al\Component\QuickBase\Request\Request;
 use GuzzleHttp\ClientInterface;
 use PhpSpec\ObjectBehavior;
 use Prophecy\Argument;

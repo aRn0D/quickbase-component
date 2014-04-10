@@ -9,7 +9,9 @@
  * file that was distributed with this source code.
  */
 
-namespace Al\Component\QuickBase\Builder\Factory;
+namespace Al\Component\QuickBase\Request\Builder\Factory;
+
+use Al\Component\QuickBase\Request\Builder\BuilderInterface;
 
 interface BuilderFactoryInterface
 {
@@ -17,7 +19,7 @@ interface BuilderFactoryInterface
      * Return a instance of a request builder
      *
      * @param string $name
-     * @return object
+     * @return BuilderInterface
      * @throws \RuntimeException
      */
     public function get($name);

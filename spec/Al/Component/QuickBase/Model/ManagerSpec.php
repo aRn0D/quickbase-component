@@ -1,9 +1,18 @@
 <?php
 
+/*
+ * This file is part of the Quickbase API package.
+ *
+ * (c) Langlade Arnaud
+ *
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
+ */
+
 namespace spec\Al\Component\QuickBase\Model;
 
-use Al\Component\QuickBase\Builder\AuthenticationBuilder;
-use Al\Component\QuickBase\Builder\Factory\BuilderFactoryInterface;
+use Al\Component\QuickBase\Request\Builder\AuthenticationBuilder;
+use Al\Component\QuickBase\Request\Builder\Factory\BuilderFactoryInterface;
 use Al\Component\QuickBase\Client\Client;
 use PhpSpec\ObjectBehavior;
 use Prophecy\Argument;
@@ -37,7 +46,7 @@ class ManagerSpec extends ObjectBehavior
 
     function it_has_a_factory()
     {
-        $this->getBuilderFactory()->shouldHaveType('Al\Component\QuickBase\Builder\Factory\BuilderFactoryInterface');
+        $this->getBuilderFactory()->shouldHaveType('Al\Component\QuickBase\Request\Builder\Factory\BuilderFactoryInterface');
     }
 
     function it_has_a_repository()

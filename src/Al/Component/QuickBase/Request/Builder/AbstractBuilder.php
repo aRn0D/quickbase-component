@@ -9,20 +9,19 @@
  * file that was distributed with this source code.
  */
 
-namespace Al\Component\QuickBase\Builder;
+namespace Al\Component\QuickBase\Request\Builder;
 
-use Al\Component\QuickBase\Client\Request;
+use Al\Component\QuickBase\Request\Request;
 
-class AbstractBuilder
+class AbstractBuilder implements BuilderInterface
 {
     /**
-     * @var Request
+     * {@inheritDoc}
      */
     protected $request = null;
 
     /**
-     * @param $action
-     * @return $this
+     * {@inheritDoc}
      */
     public function createRequest($action)
     {

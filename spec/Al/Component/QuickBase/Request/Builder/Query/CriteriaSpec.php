@@ -9,7 +9,7 @@
  * file that was distributed with this source code.
  */
 
-namespace spec\Al\Component\QuickBase\Builder\Query;
+namespace spec\Al\Component\QuickBase\Request\Builder\Query;
 
 use PhpSpec\ObjectBehavior;
 
@@ -22,7 +22,7 @@ class CriteriaSpec extends ObjectBehavior
 
     public function it_is_initializable()
     {
-        $this->shouldHaveType('Al\Component\QuickBase\Builder\Query\Criteria');
+        $this->shouldHaveType('Al\Component\QuickBase\Request\Builder\Query\Criteria');
     }
 
     public function it_should_be_transform_as_string()

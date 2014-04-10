@@ -9,7 +9,7 @@
  * file that was distributed with this source code.
  */
 
-namespace spec\Al\Component\QuickBase\Builder;
+namespace spec\Al\Component\QuickBase\Request\Builder;
 
 use PhpSpec\ObjectBehavior;
 
@@ -17,12 +17,12 @@ class AuthenticationBuilderSpec extends ObjectBehavior
 {
     public function it_is_initializable()
     {
-        $this->shouldHaveType('Al\Component\QuickBase\Builder\AuthenticationBuilder');
+        $this->shouldHaveType('Al\Component\QuickBase\Request\Builder\AuthenticationBuilder');
     }
 
     public function it_is_a_builder()
     {
-        $this->shouldHaveType('Al\Component\QuickBase\Builder\AbstractBuilder');
+        $this->shouldHaveType('Al\Component\QuickBase\Request\Builder\AbstractBuilder');
     }
 
     public function it_create_request()
@@ -38,7 +38,7 @@ class AuthenticationBuilderSpec extends ObjectBehavior
     public function it_has_request()
     {
         $this->createRequest('action');
-        $this->getRequest()->shouldHaveType('Al\Component\QuickBase\Client\Request');
+        $this->getRequest()->shouldHaveType('Al\Component\QuickBase\Request\Request');
     }
 
     public function it_username_is_mutable()

@@ -9,7 +9,7 @@
  * file that was distributed with this source code.
  */
 
-namespace Al\Component\QuickBase\Builder\Factory;
+namespace Al\Component\QuickBase\Request\Builder\Factory;
 
 class BuilderFactory implements BuilderFactoryInterface
 {

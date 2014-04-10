@@ -9,7 +9,7 @@
  * file that was distributed with this source code.
  */
 
-namespace Al\Component\QuickBase\Builder;
+namespace Al\Component\QuickBase\Request\Builder;
 
 class AuthenticationBuilder extends AbstractBuilder
 {

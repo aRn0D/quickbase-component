@@ -9,22 +9,22 @@
  * file that was distributed with this source code.
  */
 
-namespace spec\Al\Component\QuickBase\Builder;
+namespace spec\Al\Component\QuickBase\Request\Builder;
 
-use Al\Component\QuickBase\Builder\QueryBuilder;
-use Al\Component\QuickBase\Builder\Query\Criteria;
+use Al\Component\QuickBase\Request\Builder\QueryBuilder;
+use Al\Component\QuickBase\Request\Builder\Query\Criteria;
 use PhpSpec\ObjectBehavior;
 
 class QueryBuilderSpec extends ObjectBehavior
 {
     public function it_is_initializable()
     {
-        $this->shouldHaveType('Al\Component\QuickBase\Builder\QueryBuilder');
+        $this->shouldHaveType('Al\Component\QuickBase\Request\Builder\QueryBuilder');
     }
 
     public function it_is_a_builder()
     {
-        $this->shouldHaveType('Al\Component\QuickBase\Builder\AbstractBuilder');
+        $this->shouldHaveType('Al\Component\QuickBase\Request\Builder\AbstractBuilder');
     }
 
     public function it_create_request()
@@ -40,7 +40,7 @@ class QueryBuilderSpec extends ObjectBehavior
     public function it_has_request()
     {
         $this->createRequest('action');
-        $this->getRequest()->shouldHaveType('Al\Component\QuickBase\Client\Request');
+        $this->getRequest()->shouldHaveType('Al\Component\QuickBase\Request\Request');
     }
 
     public function it_is_a_structured_query()
@@ -84,7 +84,7 @@ class QueryBuilderSpec extends ObjectBehavior
         ));
     }
 
-    public function it_add_and_criteria_to_query(\Al\Component\QuickBase\Builder\Query\Criteria $criteria)
+    public function it_add_and_criteria_to_query(Criteria $criteria)
     {
         $criteria->toString()->shouldBeCalled()->willReturn('{something}');
 
@@ -97,7 +97,7 @@ class QueryBuilderSpec extends ObjectBehavior
         ));
     }
 
-    public function it_add_or_criteria_to_query(\Al\Component\QuickBase\Builder\Query\Criteria $criteria)
+    public function it_add_or_criteria_to_query(Criteria $criteria)
     {
         $criteria->toString()->shouldBeCalled()->willReturn('{something}');
 

@@ -1,5 +1,4 @@
 <?php
-
 /*
  * This file is part of the Quickbase API package.
  *
@@ -9,18 +8,20 @@
  * file that was distributed with this source code.
  */
 
-namespace Al\Component\QuickBase\Client\TransportAdapter;
+namespace Al\Component\QuickBase\Request\Builder;
 
 use Al\Component\QuickBase\Request\Request;
-use Al\Component\QuickBase\Response\Response;
 
-interface TransportAdapterInterface
+interface BuilderInterface
 {
     /**
-     * Send a request to quickbase
-     *
-     * @param Request $request
-     * @return Response
+     * @param string $action
+     * @return $this
      */
-    public function send(Request $request);
+    public function createRequest($action);
+
+    /**
+     * @return \Al\Component\QuickBase\Request\Request
+     */
+    public function getRequest();
 } 

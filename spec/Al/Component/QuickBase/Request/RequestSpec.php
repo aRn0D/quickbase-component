@@ -9,7 +9,7 @@
  * file that was distributed with this source code.
  */
 
-namespace spec\Al\Component\QuickBase\Client;
+namespace spec\Al\Component\QuickBase\Request;
 
 use PhpSpec\ObjectBehavior;
 
@@ -22,7 +22,7 @@ class RequestSpec extends ObjectBehavior
 
     public function it_is_initializable()
     {
-        $this->shouldHaveType('Al\Component\QuickBase\Client\Request');
+        $this->shouldHaveType('Al\Component\QuickBase\Request\Request');
     }
 
     public function it_has_no_host_by_default()

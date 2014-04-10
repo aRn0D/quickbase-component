@@ -9,7 +9,7 @@
  * file that was distributed with this source code.
  */
 
-namespace spec\Al\Component\QuickBase\Client;
+namespace spec\Al\Component\QuickBase\Response;
 
 use PhpSpec\ObjectBehavior;
 use Prophecy\Argument;
@@ -31,7 +31,7 @@ class ResponseSpec extends ObjectBehavior
 
     function it_is_initializable()
     {
-        $this->shouldHaveType('Al\Component\QuickBase\Client\Response');
+        $this->shouldHaveType('Al\Component\QuickBase\Response\Response');
     }
 
     function it_checks_if_a_error_occurs()

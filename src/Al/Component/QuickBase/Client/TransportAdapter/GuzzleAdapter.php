@@ -11,8 +11,8 @@
 
 namespace Al\Component\QuickBase\Client\TransportAdapter;
 
-use Al\Component\QuickBase\Client\Request;
-use Al\Component\QuickBase\Client\Response;
+use Al\Component\QuickBase\Request\Request;
+use Al\Component\QuickBase\Response\Response;
 use Al\Component\QuickBase\Exception\TransportException;
 use GuzzleHttp\ClientInterface;
 
