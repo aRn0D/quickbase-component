@@ -2,11 +2,10 @@
 
 namespace Al\Component\QuickBase\Client;
 
+use Al\Component\QuickBase\Builder\AuthenticationBuilder;
 use Al\Component\QuickBase\Builder\Factory\BuilderFactoryInterface;
 use Al\Component\QuickBase\Client\TransportAdapter\TransportAdapterInterface;
 use Al\Component\QuickBase\Exception\ClientConfigurationException;
-use Al\Component\QuickBase\Exception\TransportException;
-use GuzzleHttp\Message\ResponseInterface;
 
 class Client
 {
@@ -14,11 +13,6 @@ class Client
      * @var TransportAdapterInterface
      */
     private $transportAdapter;
-
-    /**
-     * @var BuilderFactoryInterface
-     */
-    private $builderFactory;
 
     /**
      * @var array
@@ -32,12 +26,10 @@ class Client
 
     public function __construct(
         array $configuration,
-        TransportAdapterInterface $httpAdapter,
-        BuilderFactoryInterface $builderFactory
+        TransportAdapterInterface $httpAdapter
     ) {
         $this->configuration = $configuration;
         $this->transportAdapter = $httpAdapter;
-        $this->builderFactory = $builderFactory;
     }
 
     /**
@@ -59,15 +51,15 @@ class Client
     /**
      * Return the ticket
      *
-     * @return string
+     * @param AuthenticationBuilder $authenticationBuilder
+     * @return $this
      */
-    public function authenticate()
+    public function authenticate(AuthenticationBuilder $authenticationBuilder)
     {
         $this->ticket = $this->getTicketFromTheCache();
 
         if (null === $this->ticket) {
-            $request = $this->builderFactory->get('authentication')
-                ->setUsername($this->get('username'))
+            $request = $authenticationBuilder->setUsername($this->get('username'))
                 ->setPassword($this->get('password'))
                 ->setTicketValidity($this->get('ticket_life_time_in_hours'))
                 ->setMessage($this->get('message'))

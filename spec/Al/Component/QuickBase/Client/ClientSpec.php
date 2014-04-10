@@ -13,8 +13,7 @@ use Prophecy\Argument;
 class ClientSpec extends ObjectBehavior
 {
     public function let(
-        TransportAdapterInterface $client,
-        BuilderFactoryInterface $builderFactory
+        TransportAdapterInterface $client
     ) {
         $this->beConstructedWith(
             array(
@@ -26,8 +25,7 @@ class ClientSpec extends ObjectBehavior
                 'token' => '1425454fdsq5q4g5f',
                 'cached_ticket' => __DIR__.'/ticket'
             ),
-            $client,
-            $builderFactory
+            $client
         );
     }
 
@@ -47,7 +45,6 @@ class ClientSpec extends ObjectBehavior
     }
 
     public function it_gets_ticket_from_quickbase(
-        BuilderFactoryInterface $builderFactory,
         TransportAdapterInterface $client,
         AuthenticationBuilder $authenticationBuilder,
         Request $request,
@@ -82,10 +79,7 @@ class ClientSpec extends ObjectBehavior
             ->shouldBeCalled()
             ->willReturn($response);
 
-        $builderFactory->get('authentication')
-            ->willReturn($authenticationBuilder);
-
-        $this->authenticate()->shouldReturn($this);
+        $this->authenticate($authenticationBuilder)->shouldReturn($this);
     }
 
     public function it_sends_request(
