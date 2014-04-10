@@ -13,6 +13,7 @@ namespace Al\Component\QuickBase\Client\HttpAdapter;
 
 use Al\Component\QuickBase\Client\Request;
 use Al\Component\QuickBase\Client\Response;
+use Al\Component\QuickBase\Exception\TransportException;
 use GuzzleHttp\ClientInterface;
 
 class GuzzleAdapter implements HttpAdapterInterface
@@ -32,7 +33,7 @@ class GuzzleAdapter implements HttpAdapterInterface
      */
     public function send(Request $request)
     {
-        $response = $this->client->post(
+        $clientResponse = $this->client->post(
             $request->getHost(),
             array(
                 'headers' => array(
@@ -44,6 +45,12 @@ class GuzzleAdapter implements HttpAdapterInterface
             )
         );
 
-        return new Response($response);
+        $response = new Response($clientResponse);
+
+        if ($response->isErrored()) {
+            throw new TransportException($response);
+        }
+
+        return $response;
     }
 }

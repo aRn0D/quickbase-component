@@ -40,6 +40,29 @@ class GuzzleAdapterSpec extends ObjectBehavior
         $request->getBody()->shouldBeCalled()->willReturn('<xml></xml>');
 
         $client->post(
+                'http://url.com',
+                array(
+                    'headers' => array(
+                        'Expect:',
+                        'Content-Type: application/xml',
+                        'QUICKBASE-ACTION: action',
+                    ),
+                    'body' => '<xml></xml>'
+                )
+            )
+            ->shouldBeCalled()
+            ->willReturn('<qdbapi><errcode>0</errcode></qdbapi>');
+
+        $this->send($request);
+    }
+
+    function it_sends_a_request_but_get_an_error(Request $request, ClientInterface $client)
+    {
+        $request->getAction()->shouldBeCalled()->willReturn('action');
+        $request->getHost()->shouldBeCalled()->willReturn('http://url.com');
+        $request->getBody()->shouldBeCalled()->willReturn('<xml></xml>');
+
+        $client->post(
             'http://url.com',
             array(
                 'headers' => array(
@@ -49,8 +72,11 @@ class GuzzleAdapterSpec extends ObjectBehavior
                 ),
                 'body' => '<xml></xml>'
             )
-        )->shouldBeCalled();
+        )
+            ->shouldBeCalled()
+            ->willReturn('<qdbapi><errcode>75</errcode></qdbapi>');
 
-        $this->send($request);
+        $this->shouldThrow('Al\Component\QuickBase\Exception\TransportException')
+            ->during('send', array($request));
     }
 }
