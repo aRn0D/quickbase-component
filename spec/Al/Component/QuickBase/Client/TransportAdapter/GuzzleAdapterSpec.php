@@ -9,7 +9,7 @@
  * file that was distributed with this source code.
  */
 
-namespace spec\Al\Component\QuickBase\Client\HttpAdapter;
+namespace spec\Al\Component\QuickBase\Client\TransportAdapter;
 
 use Al\Component\QuickBase\Client\Request;
 use GuzzleHttp\ClientInterface;
@@ -25,12 +25,12 @@ class GuzzleAdapterSpec extends ObjectBehavior
 
     function it_is_initializable()
     {
-        $this->shouldHaveType('Al\Component\QuickBase\Client\HttpAdapter\GuzzleAdapter');
+        $this->shouldHaveType('Al\Component\QuickBase\Client\TransportAdapter\GuzzleAdapter');
     }
 
     function it_is_http_adapter()
     {
-        $this->shouldHaveType('Al\Component\QuickBase\Client\HttpAdapter\HttpAdapterInterface');
+        $this->shouldHaveType('Al\Component\QuickBase\Client\TransportAdapter\TransportAdapterInterface');
     }
 
     function it_sends_a_request(Request $request, ClientInterface $client)

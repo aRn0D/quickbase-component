@@ -9,14 +9,14 @@
  * file that was distributed with this source code.
  */
 
-namespace Al\Component\QuickBase\Client\HttpAdapter;
+namespace Al\Component\QuickBase\Client\TransportAdapter;
 
 use Al\Component\QuickBase\Client\Request;
 use Al\Component\QuickBase\Client\Response;
 use Al\Component\QuickBase\Exception\TransportException;
 use GuzzleHttp\ClientInterface;
 
-class GuzzleAdapter implements HttpAdapterInterface
+class GuzzleAdapter implements TransportAdapterInterface
 {
     /**
      * @var ClientInterface

@@ -3,17 +3,17 @@
 namespace Al\Component\QuickBase\Client;
 
 use Al\Component\QuickBase\Builder\Factory\BuilderFactoryInterface;
-use Al\Component\QuickBase\Client\HttpAdapter\HttpAdapterInterface;
+use Al\Component\QuickBase\Client\TransportAdapter\TransportAdapterInterface;
 use Al\Component\QuickBase\Exception\ClientConfigurationException;
-use Al\Component\QuickBase\Exception\RequestException;
+use Al\Component\QuickBase\Exception\TransportException;
 use GuzzleHttp\Message\ResponseInterface;
 
 class Client
 {
     /**
-     * @var HttpAdapterInterface
+     * @var TransportAdapterInterface
      */
-    private $httpAdapter;
+    private $transportAdapter;
 
     /**
      * @var BuilderFactoryInterface
@@ -32,20 +32,20 @@ class Client
 
     public function __construct(
         array $configuration,
-        HttpAdapterInterface $httpAdapter,
+        TransportAdapterInterface $httpAdapter,
         BuilderFactoryInterface $builderFactory
     ) {
         $this->configuration = $configuration;
-        $this->httpAdapter = $httpAdapter;
+        $this->transportAdapter = $httpAdapter;
         $this->builderFactory = $builderFactory;
     }
 
     /**
-     * @return HttpAdapterInterface
+     * @return TransportAdapterInterface
      */
-    public function getHttpAdapter()
+    public function getTransportAdapter()
     {
-        return $this->httpAdapter;
+        return $this->transportAdapter;
     }
 
     /**
@@ -73,7 +73,7 @@ class Client
                 ->setMessage($this->get('message'))
                 ->getRequest();
 
-            $this->ticket = $this->getHttpAdapter()
+            $this->ticket = $this->getTransportAdapter()
                 ->send($request)
                 ->getData('ticket', 'string');
 
@@ -94,7 +94,7 @@ class Client
         $request->setHost($this->get('host'))
             ->setToken($this->get('token'));
 
-        return $this->httpAdapter
+        return $this->transportAdapter
             ->send($request);
     }
 
