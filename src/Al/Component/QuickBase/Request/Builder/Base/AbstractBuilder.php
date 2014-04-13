@@ -11,7 +11,6 @@
 
 namespace Al\Component\QuickBase\Request\Builder\Base;
 
-use Al\Component\QuickBase\Request\Builder\Base\BuilderInterface;
 use Al\Component\QuickBase\Request\Request;
 
 class AbstractBuilder implements BuilderInterface

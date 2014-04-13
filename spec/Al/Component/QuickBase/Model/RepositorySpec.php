@@ -11,6 +11,7 @@
 
 namespace spec\Al\Component\QuickBase\Model;
 
+use Al\Component\QuickBase\Request\Builder\Base\BuilderInterface;
 use Al\Component\QuickBase\Request\Builder\Factory\BuilderFactoryInterface;
 use Al\Component\QuickBase\Request\Builder\QueryBuilder;
 use Al\Component\QuickBase\Client\Client;
@@ -27,6 +28,7 @@ class RepositorySpec extends ObjectBehavior
         BuilderFactoryInterface $factory,
         Client $client
     ) {
+        $queryBuilder->createRequest(BuilderInterface::QUERY)->willReturn($queryBuilder);
         $factory->get('query')->willReturn($queryBuilder);
         $manager->getBuilderFactory()->willReturn($factory);
         $manager->getClient()->willReturn($client);

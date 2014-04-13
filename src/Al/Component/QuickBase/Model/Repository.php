@@ -11,6 +11,7 @@
 
 namespace Al\Component\QuickBase\Model;
 
+use Al\Component\QuickBase\Request\Builder\Base\BuilderInterface;
 use Al\Component\QuickBase\Request\Builder\Query\Criteria;
 use Al\Component\QuickBase\Request\Builder\QueryBuilder;
 
@@ -33,7 +34,8 @@ class Repository
     {
         return $this->manager
             ->getBuilderFactory()
-            ->get('query');
+            ->get('query')
+            ->createRequest(BuilderInterface::QUERY);
     }
 
     /**

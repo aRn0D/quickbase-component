@@ -15,6 +15,8 @@ use Al\Component\QuickBase\Request\Request;
 
 interface BuilderInterface
 {
+    const QUERY = 'API_DoQuery';
+
     /**
      * Create an instace of a Request
      *
