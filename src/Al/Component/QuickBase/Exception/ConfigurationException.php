@@ -11,7 +11,7 @@
 
 namespace Al\Component\QuickBase\Exception;
 
-class ClientConfigurationException extends \Exception
+class ConfigurationException extends \Exception
 {
     public function __construct($param, $code = 0, \Exception $previous = null)
     {

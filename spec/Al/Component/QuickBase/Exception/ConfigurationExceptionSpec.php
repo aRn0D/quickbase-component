@@ -13,7 +13,7 @@ namespace spec\Al\Component\QuickBase\Exception;
 
 use PhpSpec\ObjectBehavior;
 
-class ClientConfigurationExceptionSpec extends ObjectBehavior
+class ConfigurationExceptionSpec extends ObjectBehavior
 {
     public function let()
     {
@@ -22,7 +22,7 @@ class ClientConfigurationExceptionSpec extends ObjectBehavior
 
     public function it_is_initializable()
     {
-        $this->shouldHaveType('Al\Component\QuickBase\Exception\ClientConfigurationException');
+        $this->shouldHaveType('Al\Component\QuickBase\Exception\ConfigurationException');
     }
 
     public function it_is_exception()
