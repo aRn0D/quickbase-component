@@ -1,4 +1,5 @@
 <?php
+
 /*
  * This file is part of the Quickbase API package.
  *
@@ -8,20 +9,24 @@
  * file that was distributed with this source code.
  */
 
-namespace Al\Component\QuickBase\Request\Builder;
+namespace Al\Component\QuickBase\Request\Builder\Base;
 
 use Al\Component\QuickBase\Request\Request;
 
 interface BuilderInterface
 {
     /**
+     * Create an instace of a Request
+     *
      * @param string $action
      * @return $this
      */
     public function createRequest($action);
 
     /**
-     * @return \Al\Component\QuickBase\Request\Request
+     * Return the request
+     *
+     * @return Request
      */
     public function getRequest();
 } 

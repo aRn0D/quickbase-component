@@ -11,7 +11,7 @@
 
 namespace Al\Component\QuickBase\Request\Builder\Factory;
 
-use Al\Component\QuickBase\Request\Builder\BuilderInterface;
+use Al\Component\QuickBase\Request\Builder\Base\BuilderInterface;
 
 interface BuilderFactoryInterface
 {

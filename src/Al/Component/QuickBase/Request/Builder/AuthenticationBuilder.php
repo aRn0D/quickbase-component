@@ -11,6 +11,8 @@
 
 namespace Al\Component\QuickBase\Request\Builder;
 
+use Al\Component\QuickBase\Request\Builder\Base\AbstractBuilder;
+
 class AuthenticationBuilder extends AbstractBuilder
 {
     public function setUsername($username)

@@ -11,6 +11,7 @@
 
 namespace Al\Component\QuickBase\Request\Builder;
 
+use Al\Component\QuickBase\Request\Builder\Base\AbstractBuilder;
 use Al\Component\QuickBase\Request\Builder\Query\Criteria;
 
 class QueryBuilder extends AbstractBuilder

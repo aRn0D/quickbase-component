@@ -22,7 +22,7 @@ class AuthenticationBuilderSpec extends ObjectBehavior
 
     public function it_is_a_builder()
     {
-        $this->shouldHaveType('Al\Component\QuickBase\Request\Builder\AbstractBuilder');
+        $this->shouldHaveType('Al\Component\QuickBase\Request\Builder\Base\AbstractBuilder');
     }
 
     public function it_create_request()

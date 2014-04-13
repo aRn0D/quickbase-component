@@ -9,8 +9,9 @@
  * file that was distributed with this source code.
  */
 
-namespace Al\Component\QuickBase\Request\Builder;
+namespace Al\Component\QuickBase\Request\Builder\Base;
 
+use Al\Component\QuickBase\Request\Builder\Base\BuilderInterface;
 use Al\Component\QuickBase\Request\Request;
 
 class AbstractBuilder implements BuilderInterface
