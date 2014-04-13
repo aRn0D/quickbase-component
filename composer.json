@@ -12,6 +12,7 @@
 
     "autoload": {
         "psr-4": {
+            "spec\\Al\\Component\\QuickBase\\": "spec/Al/Component/QuickBase",
             "Al\\Component\\QuickBase\\": "src/Al/Component/QuickBase"
         }
     },
