@@ -26,13 +26,19 @@ class Manager
      */
     protected $builderFactory;
 
-    public function __construct(Client $client, BuilderFactoryInterface $builderFactory)
-    {
-        $client->authenticate($builderFactory->get('authentication'));
+    /**
+     * @var array
+     */
+    protected $modelMapping = array();
 
+    public function __construct(
+        array $modelMapping,
+        Client $client,
+        BuilderFactoryInterface $builderFactory
+    ) {
+        $this->modelMapping = $modelMapping;
         $this->client = $client;
         $this->builderFactory= $builderFactory;
-
     }
 
     /**
@@ -56,20 +62,18 @@ class Manager
     }
 
     /**
-     * TODO : rewrite it...
-     *
-     * @param null $repository
+     * @param null $entityName
      * @return mixed
      * @throws \RuntimeException
      */
-    public function getRepository($repository = null)
+    public function getRepository($entityName = null)
     {
-        if (null === $repository) {
-            $repository = 'Al\Component\QuickBase\Model\Repository';
+        if (!class_exists($entityName)) {
+            throw new \RuntimeException(sprintf('Given entity %s does not exist', $entityName));
         }
 
-        if (!class_exists($repository) || $repository instanceof Repository) {
-            throw new \RuntimeException('');
+        if (null === $repository = $this->getRepositoryClassName($entityName)) {
+            $repository = 'Al\Component\QuickBase\Model\Repository';
         }
 
         return new $repository($this);
@@ -89,5 +93,19 @@ class Manager
     public function remove()
     {
         // TODO: write logic here
+    }
+
+    private function getRepositoryClassName($entityName)
+    {
+        $repository = null;
+        if (isset($this->modelMapping[$entityName])) {
+            $repository = $this->modelMapping[$entityName]['repository'];
+
+            if (!class_exists($repository)) {
+                throw new \RuntimeException(sprintf('Given repository %s does not exist', $repository));
+            }
+        }
+
+        return $repository;
     }
 }

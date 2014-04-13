@@ -59,31 +59,15 @@ class ClientSpec extends ObjectBehavior
         Response $response
     )
     {
-        $authenticationBuilder->setUsername('user')
-            ->shouldBeCalled()
-            ->willReturn($authenticationBuilder);
-
-        $authenticationBuilder->setPassword('password')
-            ->shouldBeCalled()
-            ->willReturn($authenticationBuilder);
-
-        $authenticationBuilder->setTicketValidity(10)
-            ->shouldBeCalled()
-            ->willReturn($authenticationBuilder);
-
-        $authenticationBuilder->setMessage('Welcome')
-            ->shouldBeCalled()
-            ->willReturn($authenticationBuilder);
-
-        $authenticationBuilder->getRequest()
-            ->shouldBeCalled()
-            ->willReturn($request);
-
         $response->getData('ticket', 'string')
             ->shouldBeCalled()
             ->willReturn('FDSQ3543SGFSD45');
 
-        $client ->send($request)
+        $response->getData('userid', 'string')
+            ->shouldBeCalled()
+            ->willReturn('112245.efy7');
+
+        $client ->send(Argument::type('Al\Component\QuickBase\Request\Request'))
             ->shouldBeCalled()
             ->willReturn($response);
 

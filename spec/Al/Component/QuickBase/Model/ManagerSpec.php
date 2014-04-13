@@ -21,17 +21,26 @@ class ManagerSpec extends ObjectBehavior
 {
     function let(
         Client $client,
-        BuilderFactoryInterface $builderFactory,
-        AuthenticationBuilder $authenticationBuilder
+        BuilderFactoryInterface $builderFactory
     ) {
-        $builderFactory->get('authentication')
-            ->shouldBeCalled()
-            ->willReturn($authenticationBuilder);
+        $this->beConstructedWith(
+            array(
+                'spec\Al\Component\QuickBase\Fixture\Model' => array(
+                    'repository' => 'spec\Al\Component\QuickBase\Fixture\Repository',
+                    'mapping' => array(
 
-        $client->authenticate($authenticationBuilder)
-            ->shouldBeCalled();
+                    ),
+                ),
+                'spec\Al\Component\QuickBase\Fixture\MyModel'  => array(
+                    'repository' => 'spec\Al\Component\QuickBase\Fixture\BadRepository',
+                    'mapping' => array(
 
-        $this->beConstructedWith($client, $builderFactory);
+                    ),
+                )
+            ),
+            $client,
+            $builderFactory
+        );
     }
 
     function it_is_initializable()
@@ -46,18 +55,24 @@ class ManagerSpec extends ObjectBehavior
 
     function it_has_a_factory()
     {
-        $this->getBuilderFactory()->shouldHaveType('Al\Component\QuickBase\Request\Builder\Factory\BuilderFactoryInterface');
+        $this->getBuilderFactory()
+            ->shouldHaveType('Al\Component\QuickBase\Request\Builder\Factory\BuilderFactoryInterface');
     }
 
     function it_has_a_repository()
     {
-        $this->getRepository()->shouldHaveType('Al\Component\QuickBase\Model\Repository');
-        $this->getRepository('Al\Component\QuickBase\Model\Repository')->shouldHaveType('Al\Component\QuickBase\Model\Repository');
+        $this->getRepository('spec\Al\Component\QuickBase\Fixture\Model')
+            ->shouldHaveType('spec\Al\Component\QuickBase\Fixture\Repository');
+        $this->getRepository('spec\Al\Component\QuickBase\Fixture\OtherModel')
+            ->shouldHaveType('Al\Component\QuickBase\Model\Repository');
     }
 
     function it_should_throw_exception_if_the_repository_is_not_valid()
     {
-
+        $this->shouldThrow('\RuntimeException')->during('getRepository', array());
+        $this->shouldThrow('\RuntimeException')->during('getRepository', array(
+            'spec\Al\Component\QuickBase\Fixture\MyModel'
+        ));
     }
 
     function it_create_a_resource()

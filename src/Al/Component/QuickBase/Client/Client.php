@@ -13,7 +13,7 @@ namespace Al\Component\QuickBase\Client;
 
 use Al\Component\QuickBase\Request\Builder\AuthenticationBuilder;
 use Al\Component\QuickBase\Client\TransportAdapter\TransportAdapterInterface;
-use Al\Component\QuickBase\Exception\ClientConfigurationException;
+use Al\Component\QuickBase\Exception\ConfigurationException;
 use Al\Component\QuickBase\Request\Request;
 
 class Client
@@ -32,6 +32,11 @@ class Client
      * @var string
      */
     private $ticket = null;
+
+    /**
+     * @var string
+     */
+    private $userId = null;
 
     public function __construct(
         array $configuration,
@@ -60,23 +65,23 @@ class Client
     /**
      * Return the ticket
      *
-     * @param AuthenticationBuilder $authenticationBuilder
      * @return $this
      */
-    public function authenticate(AuthenticationBuilder $authenticationBuilder)
+    public function authenticate()
     {
         $this->ticket = $this->getTicketFromTheCache();
 
         if (null === $this->ticket) {
-            $request = $authenticationBuilder->setUsername($this->get('username'))
-                ->setPassword($this->get('password'))
-                ->setTicketValidity($this->get('ticket_life_time_in_hours'))
-                ->setMessage($this->get('message'))
-                ->getRequest();
+            $request = (new Request('API_Authenticate'))
+                ->addParameter('username', $this->get('username'))
+                ->addParameter('password', $this->get('password'))
+                ->addParameter('hours', $this->get('ticket_life_time_in_hours'))
+                ->addParameter('udata', $this->get('message'));
 
-            $this->ticket = $this->getTransportAdapter()
-                ->send($request)
-                ->getData('ticket', 'string');
+            $response = $this->getTransportAdapter()->send($request);
+
+            $this->ticket = $response->getData('ticket', 'string');
+            $this->userId = $response->getData('userid', 'string');
 
             $this->saveTicket();
         }
@@ -137,7 +142,7 @@ class Client
      *
      * @param  string                       $key
      * @return string
-     * @throws ClientConfigurationException
+     * @throws ConfigurationException
      */
     private function get($key)
     {
@@ -145,6 +150,6 @@ class Client
             return $this->configuration[$key];
         }
 
-        throw new ClientConfigurationException($key);
+        throw new ConfigurationException($key);
     }
 }
