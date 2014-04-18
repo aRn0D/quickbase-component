@@ -126,6 +126,23 @@ class Request
     }
 
     /**
+     * @param string $name
+     * @param array$attributes
+     * @param mixed $value
+     * @return $this
+     */
+    public function addCollectionParameter($name, $value, array $attributes = array())
+    {
+        $this->parameters[$name][] = array(
+            'attributes' => $attributes,
+            'values' => $value
+        );
+
+        return $this;
+    }
+
+
+    /**
      * @param $key
      * @return bool
      */

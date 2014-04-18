@@ -81,6 +81,21 @@ class RequestSpec extends ObjectBehavior
         ));
     }
 
+    public function it_creates_a_collection_paramater()
+    {
+        $this->addCollectionParameter('parameter', 'value1')->shouldReturn($this);
+        $this->addCollectionParameter('parameter', 'value2', array('id' => 'parameterId'))->shouldReturn($this);
+        $this->getParameters()->shouldReturn(array(
+            'parameter' => array(
+                array('values' => 'value1'),
+                array(
+                    'values' => 'value2',
+                    'attributes' => array('id' => 'parameterId')
+                ),
+            )
+        ));
+    }
+
     public function it_checks_if_paramter_exists()
     {
         $this->addParameter('parameter', 'value')->shouldReturn($this);
