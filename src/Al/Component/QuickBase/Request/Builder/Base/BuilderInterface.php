@@ -16,6 +16,9 @@ use Al\Component\QuickBase\Request\Request;
 interface BuilderInterface
 {
     const QUERY = 'API_DoQuery';
+    const ADD_RECORD = 'API_AddRecord';
+    const EDIT_RECORD = 'API_EditRecord';
+    const DELETE_RECORD = 'API_DeleteRecord';
 
     /**
      * Create an instace of a Request
