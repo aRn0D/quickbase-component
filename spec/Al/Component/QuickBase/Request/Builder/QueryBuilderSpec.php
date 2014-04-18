@@ -46,7 +46,7 @@ class QueryBuilderSpec extends ObjectBehavior
     public function it_is_a_structured_query()
     {
         $this->createRequest('action')
-            ->isStructured(true)
+            ->setStructured(true)
             ->shouldReturn($this);
 
         $this->getRequest()->getParameters()->shouldReturn(array(
@@ -57,7 +57,7 @@ class QueryBuilderSpec extends ObjectBehavior
     public function it_is_not_a_structured_query()
     {
         $this->createRequest('action')
-            ->isStructured(false)
+            ->setStructured(false)
             ->shouldReturn($this);
 
         $this->getRequest()->getParameters()->shouldReturn(array());

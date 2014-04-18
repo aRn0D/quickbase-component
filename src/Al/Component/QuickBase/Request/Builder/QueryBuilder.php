@@ -23,19 +23,6 @@ class QueryBuilder extends AbstractBuilder
     const SORT_DESC = 'sortorder-D';
 
     /**
-     * Makes the query result structured or not
-     *
-     * @param  boolean $structured
-     * @return $this
-     */
-    public function isStructured($structured = true)
-    {
-        $structured ? $this->request->addParameter('fmt', 'structured') : $this->request->clearParameter('fmt');
-
-        return $this;
-    }
-
-    /**
      * Select columns in Query
      *
      * @param  array $columns

@@ -16,7 +16,7 @@ use Al\Component\QuickBase\Request\Request;
 class AbstractBuilder implements BuilderInterface
 {
     /**
-     * {@inheritDoc}
+     * @var Request
      */
     protected $request = null;
 
@@ -36,5 +36,18 @@ class AbstractBuilder implements BuilderInterface
     public function getRequest()
     {
         return $this->request;
+    }
+
+    /**
+     * Makes the query result structured or not
+     *
+     * @param  boolean $structured
+     * @return $this
+     */
+    public function setStructured($structured = true)
+    {
+        $structured ? $this->request->addParameter('fmt', 'structured') : $this->request->clearParameter('fmt');
+
+        return $this;
     }
 }
