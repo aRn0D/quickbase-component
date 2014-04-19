@@ -106,7 +106,7 @@ class Client
     /**
      * Return the ticket from the cache
      *
-     * @return null
+     * @return null|string
      */
     private function getTicketFromTheCache()
     {
