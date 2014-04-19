@@ -52,6 +52,7 @@ class QueryBuilderSpec extends ObjectBehavior
         $this->getRequest()->getParameters()->shouldReturn(array(
             'fmt' => 'structured'
         ));
+        $this->isStructured()->shouldReturn(true);
     }
 
     public function it_is_not_a_structured_query()
@@ -61,6 +62,7 @@ class QueryBuilderSpec extends ObjectBehavior
             ->shouldReturn($this);
 
         $this->getRequest()->getParameters()->shouldReturn(array());
+        $this->isStructured()->shouldReturn(false);
     }
 
     public function it_select_specifics_columns()

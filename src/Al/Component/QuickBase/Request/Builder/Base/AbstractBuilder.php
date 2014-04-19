@@ -46,8 +46,22 @@ class AbstractBuilder implements BuilderInterface
      */
     public function setStructured($structured = true)
     {
-        $structured ? $this->request->addParameter('fmt', 'structured') : $this->request->clearParameter('fmt');
+        if ($structured) {
+            $this->getRequest()->addParameter('fmt', 'structured');
+        } else {
+            $this->getRequest()->clearParameter('fmt');
+        }
 
         return $this;
+    }
+
+    /**
+     * @return bool
+     */
+    public function isStructured()
+    {
+        $fmt = $this->getRequest()->getParameter('fmt');
+
+        return 'structured' == $fmt;
     }
 }
