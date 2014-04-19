@@ -18,9 +18,9 @@ interface BuilderFactoryInterface
     /**
      * Return a instance of a request builder
      *
-     * @param string $name
+     * @param  string            $name
      * @return BuilderInterface
      * @throws \RuntimeException
      */
     public function get($name);
-} 
+}

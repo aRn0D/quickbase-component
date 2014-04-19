@@ -14,7 +14,7 @@ namespace Al\Component\QuickBase\Request\Builder\Factory;
 class BuilderFactory implements BuilderFactoryInterface
 {
     /**
-     * @param string $name
+     * @param  string            $name
      * @return object
      * @throws \RuntimeException
      */

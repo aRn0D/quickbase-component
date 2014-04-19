@@ -22,7 +22,7 @@ use Prophecy\Argument;
 
 class RepositorySpec extends ObjectBehavior
 {
-    function let(
+    public function let(
         QueryBuilder $queryBuilder,
         Manager $manager,
         BuilderFactoryInterface $factory,
@@ -36,12 +36,12 @@ class RepositorySpec extends ObjectBehavior
         $this->beConstructedWith($manager);
     }
 
-    function it_is_initializable()
+    public function it_is_initializable()
     {
         $this->shouldHaveType('Al\Component\QuickBase\Model\Repository');
     }
 
-    function it_find_a_single_resource(
+    public function it_find_a_single_resource(
         QueryBuilder $queryBuilder,
         Request $request,
         Client $client
@@ -70,7 +70,7 @@ class RepositorySpec extends ObjectBehavior
         ));
     }
 
-    function it_find_a_collection_of_resource(
+    public function it_find_a_collection_of_resource(
         QueryBuilder $queryBuilder,
         Request $request,
         Client $client
@@ -100,7 +100,7 @@ class RepositorySpec extends ObjectBehavior
         $this->findBy();
     }
 
-    function it_find_a_collection_of_resource_with_criteria(
+    public function it_find_a_collection_of_resource_with_criteria(
         QueryBuilder $queryBuilder,
         Request $request,
         Client $client
@@ -134,7 +134,7 @@ class RepositorySpec extends ObjectBehavior
         $this->findBy(array(1 => 'value'));
     }
 
-    function it_find_a_collection_of_resource_with_pagination(
+    public function it_find_a_collection_of_resource_with_pagination(
         QueryBuilder $queryBuilder,
         Request $request,
         Client $client
@@ -164,7 +164,7 @@ class RepositorySpec extends ObjectBehavior
         $this->findBy(array(), 1, 10);
     }
 
-    function it_find_a_collection_of_resource_with_sorting(
+    public function it_find_a_collection_of_resource_with_sorting(
         QueryBuilder $queryBuilder,
         Request $request,
         Client $client

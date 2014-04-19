@@ -23,7 +23,7 @@ interface BuilderInterface
     /**
      * Create an instace of a Request
      *
-     * @param string $action
+     * @param  string $action
      * @return $this
      */
     public function createRequest($action);
@@ -34,4 +34,4 @@ interface BuilderInterface
      * @return Request
      */
     public function getRequest();
-} 
+}

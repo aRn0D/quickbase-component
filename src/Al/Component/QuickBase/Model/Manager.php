@@ -65,7 +65,7 @@ class Manager
     /**
      * Return the instance of the repository related to $entityName
      *
-     * @param string $entityName
+     * @param  string            $entityName
      * @return Repository
      * @throws \RuntimeException
      */
@@ -160,7 +160,7 @@ class Manager
      */
     private function getEntityMapping($model)
     {
-        if(false === $className = get_class($model)) {
+        if (false === $className = get_class($model)) {
             throw new \RuntimeException('Impossible to get the entity classname');
         }
 

@@ -22,7 +22,7 @@ class EditionBuilder extends AbstractBuilder
             throw new \RuntimeException('Mapping configuration has not been set.');
         }
 
-        foreach($this->mapping as $field) {
+        foreach ($this->mapping as $field) {
             $this->request->addCollectionParameter(
                 'field',
                 $this->getModelVale($model, $field['model']),
@@ -33,7 +33,7 @@ class EditionBuilder extends AbstractBuilder
     }
 
     /**
-     * @param array $mapping
+     * @param  array $mapping
      * @return $this
      */
     public function setMapping(array $mapping)

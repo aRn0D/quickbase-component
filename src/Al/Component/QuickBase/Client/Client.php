@@ -11,7 +11,6 @@
 
 namespace Al\Component\QuickBase\Client;
 
-use Al\Component\QuickBase\Request\Builder\AuthenticationBuilder;
 use Al\Component\QuickBase\Client\TransportAdapter\TransportAdapterInterface;
 use Al\Component\QuickBase\Exception\ConfigurationException;
 use Al\Component\QuickBase\Request\Request;
@@ -92,7 +91,7 @@ class Client
     /**
      * Send a request to quickbase
      *
-     * @param Request $request
+     * @param  Request $request
      * @return mixed
      */
     public function send(Request $request)
@@ -140,7 +139,7 @@ class Client
     /**
      * Get parameter from the configuration
      *
-     * @param  string                       $key
+     * @param  string                 $key
      * @return string
      * @throws ConfigurationException
      */

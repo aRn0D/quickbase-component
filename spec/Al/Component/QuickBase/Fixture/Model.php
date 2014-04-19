@@ -11,7 +11,7 @@
 
 namespace spec\Al\Component\QuickBase\Fixture;
 
-class Model 
+class Model
 {
     private $id;
     private $property;

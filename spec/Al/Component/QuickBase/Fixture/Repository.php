@@ -16,4 +16,4 @@ use \Al\Component\QuickBase\Model\Repository as BaseRepository;
 class Repository extends BaseRepository
 {
 
-} 
+}

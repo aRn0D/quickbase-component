@@ -12,21 +12,20 @@
 namespace spec\Al\Component\QuickBase\Request\Builder\Factory;
 
 use PhpSpec\ObjectBehavior;
-use Prophecy\Argument;
 
 class BuilderFactorySpec extends ObjectBehavior
 {
-    function it_is_initializable()
+    public function it_is_initializable()
     {
         $this->shouldHaveType('Al\Component\QuickBase\Request\Builder\Factory\BuilderFactory');
     }
 
-    function it_is_a_factory()
+    public function it_is_a_factory()
     {
         $this->shouldHaveType('Al\Component\QuickBase\Request\Builder\Factory\BuilderFactoryInterface');
     }
 
-    function it_create_a_builder()
+    public function it_create_a_builder()
     {
         $this->get('query')->shouldHaveType('Al\Component\QuickBase\Request\Builder\QueryBuilder');
     }

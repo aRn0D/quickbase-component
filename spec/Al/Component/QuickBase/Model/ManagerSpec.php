@@ -11,7 +11,6 @@
 
 namespace spec\Al\Component\QuickBase\Model;
 
-use Al\Component\QuickBase\Request\Builder\AuthenticationBuilder;
 use Al\Component\QuickBase\Request\Builder\Base\BuilderInterface;
 use Al\Component\QuickBase\Request\Builder\EditionBuilder;
 use Al\Component\QuickBase\Request\Builder\Factory\BuilderFactoryInterface;
@@ -24,7 +23,7 @@ use spec\Al\Component\QuickBase\Fixture\Model;
 
 class ManagerSpec extends ObjectBehavior
 {
-    function let(
+    public function let(
         Client $client,
         BuilderFactoryInterface $builderFactory
     ) {
@@ -61,23 +60,23 @@ class ManagerSpec extends ObjectBehavior
         );
     }
 
-    function it_is_initializable()
+    public function it_is_initializable()
     {
         $this->shouldHaveType('Al\Component\QuickBase\Model\Manager');
     }
 
-    function it_has_http_client()
+    public function it_has_http_client()
     {
         $this->getClient()->shouldHaveType('Al\Component\QuickBase\Client\Client');
     }
 
-    function it_has_a_factory()
+    public function it_has_a_factory()
     {
         $this->getBuilderFactory()
             ->shouldHaveType('Al\Component\QuickBase\Request\Builder\Factory\BuilderFactoryInterface');
     }
 
-    function it_has_a_repository()
+    public function it_has_a_repository()
     {
         $this->getRepository('spec\Al\Component\QuickBase\Fixture\Model')
             ->shouldHaveType('spec\Al\Component\QuickBase\Fixture\Repository');
@@ -85,14 +84,14 @@ class ManagerSpec extends ObjectBehavior
             ->shouldHaveType('Al\Component\QuickBase\Model\Repository');
     }
 
-    function it_should_throw_exception_if_the_repository_is_not_valid()
+    public function it_should_throw_exception_if_the_repository_is_not_valid()
     {
         $this->shouldThrow('\RuntimeException')->during('getRepository', array(
             'spec\Al\Component\QuickBase\Fixture\MyModel'
         ));
     }
 
-    function it_create_a_resource(
+    public function it_create_a_resource(
         Model $model,
         BuilderFactoryInterface $builderFactory,
         EditionBuilder $editionBuilder,
@@ -127,7 +126,7 @@ class ManagerSpec extends ObjectBehavior
         $this->create($model);
     }
 
-    function it_update_a_resource(
+    public function it_update_a_resource(
         Model $model,
         BuilderFactoryInterface $builderFactory,
         EditionBuilder $editionBuilder,
@@ -162,7 +161,7 @@ class ManagerSpec extends ObjectBehavior
         $this->update($model);
     }
 
-    function it_remove_a_resource(
+    public function it_remove_a_resource(
         Model $model,
         BuilderFactoryInterface $builderFactory,
         EditionBuilder $editionBuilder,

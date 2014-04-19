@@ -39,7 +39,7 @@ class Request
     }
 
     /**
-     * @param string $host
+     * @param  string $host
      * @return $this
      */
     public function setHost($host)
@@ -58,7 +58,7 @@ class Request
     }
 
     /**
-     * @param string $token
+     * @param  string $token
      * @return $this
      */
     public function setToken($token)
@@ -130,9 +130,9 @@ class Request
     }
 
     /**
-     * @param string $name
+     * @param  string $name
      * @param array$attributes
-     * @param mixed $value
+     * @param  mixed  $value
      * @return $this
      */
     public function addCollectionParameter($name, $value, array $attributes = array())
@@ -144,7 +144,6 @@ class Request
 
         return $this;
     }
-
 
     /**
      * @param $key

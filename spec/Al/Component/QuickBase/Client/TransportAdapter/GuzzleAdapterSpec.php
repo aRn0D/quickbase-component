@@ -14,26 +14,25 @@ namespace spec\Al\Component\QuickBase\Client\TransportAdapter;
 use Al\Component\QuickBase\Request\Request;
 use GuzzleHttp\ClientInterface;
 use PhpSpec\ObjectBehavior;
-use Prophecy\Argument;
 
 class GuzzleAdapterSpec extends ObjectBehavior
 {
-    function let(ClientInterface $client)
+    public function let(ClientInterface $client)
     {
         $this->beConstructedWith($client);
     }
 
-    function it_is_initializable()
+    public function it_is_initializable()
     {
         $this->shouldHaveType('Al\Component\QuickBase\Client\TransportAdapter\GuzzleAdapter');
     }
 
-    function it_is_http_adapter()
+    public function it_is_http_adapter()
     {
         $this->shouldHaveType('Al\Component\QuickBase\Client\TransportAdapter\TransportAdapterInterface');
     }
 
-    function it_sends_a_request(Request $request, ClientInterface $client)
+    public function it_sends_a_request(Request $request, ClientInterface $client)
     {
         $request->getAction()->shouldBeCalled()->willReturn('action');
         $request->getHost()->shouldBeCalled()->willReturn('http://url.com');
@@ -56,7 +55,7 @@ class GuzzleAdapterSpec extends ObjectBehavior
         $this->send($request);
     }
 
-    function it_sends_a_request_but_get_an_error(Request $request, ClientInterface $client)
+    public function it_sends_a_request_but_get_an_error(Request $request, ClientInterface $client)
     {
         $request->getAction()->shouldBeCalled()->willReturn('action');
         $request->getHost()->shouldBeCalled()->willReturn('http://url.com');

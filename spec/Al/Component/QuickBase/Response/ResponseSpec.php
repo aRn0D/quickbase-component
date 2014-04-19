@@ -12,11 +12,10 @@
 namespace spec\Al\Component\QuickBase\Response;
 
 use PhpSpec\ObjectBehavior;
-use Prophecy\Argument;
 
 class ResponseSpec extends ObjectBehavior
 {
-    function let()
+    public function let()
     {
         $this->beConstructedWith("
             <qdbapi>
@@ -29,17 +28,17 @@ class ResponseSpec extends ObjectBehavior
         ");
     }
 
-    function it_is_initializable()
+    public function it_is_initializable()
     {
         $this->shouldHaveType('Al\Component\QuickBase\Response\Response');
     }
 
-    function it_checks_if_a_error_occurs()
+    public function it_checks_if_a_error_occurs()
     {
         $this->isErrored()->shouldReturn(false);
     }
 
-    function it_finds_a_error_occurs()
+    public function it_finds_a_error_occurs()
     {
         $this->beConstructedWith("
             <qdbapi>
@@ -50,12 +49,12 @@ class ResponseSpec extends ObjectBehavior
         $this->isErrored()->shouldReturn(true);
     }
 
-    function it_has_action()
+    public function it_has_action()
     {
         $this->getAction()->shouldReturn('API_Authenticate');
     }
 
-    function it_has_error_message()
+    public function it_has_error_message()
     {
         $this->beConstructedWith("
             <qdbapi>
@@ -69,12 +68,12 @@ class ResponseSpec extends ObjectBehavior
         ));
     }
 
-    function it_has_typed_data()
+    public function it_has_typed_data()
     {
         $this->getData('userid', 'integer')->shouldReturn(58421);
     }
 
-    function it_has_data()
+    public function it_has_data()
     {
         $this->getData('userid')->shouldHaveType('\SimpleXMLElement');
     }

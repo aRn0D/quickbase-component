@@ -42,12 +42,12 @@ class ClientSpec extends ObjectBehavior
         $this->shouldHaveType('Al\Component\QuickBase\Client\Client');
     }
 
-    function it_has_no_a_ticket_by_defautt()
+    public function it_has_no_a_ticket_by_defautt()
     {
         $this->getTicket()->shouldReturn(null);
     }
 
-    function it_has_transport_adapter()
+    public function it_has_transport_adapter()
     {
         $this->getTransportAdapter()->shouldHaveType('Al\Component\QuickBase\Client\TransportAdapter\TransportAdapterInterface');
     }

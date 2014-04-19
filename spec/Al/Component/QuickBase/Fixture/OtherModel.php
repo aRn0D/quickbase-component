@@ -14,4 +14,4 @@ namespace spec\Al\Component\QuickBase\Fixture;
 class OtherModel
 {
 
-} 
+}

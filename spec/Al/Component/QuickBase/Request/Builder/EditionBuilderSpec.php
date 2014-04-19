@@ -3,12 +3,11 @@
 namespace spec\Al\Component\QuickBase\Request\Builder;
 
 use PhpSpec\ObjectBehavior;
-use Prophecy\Argument;
 use spec\Al\Component\QuickBase\Fixture\Model;
 
 class EditionBuilderSpec extends ObjectBehavior
 {
-    function it_is_initializable()
+    public function it_is_initializable()
     {
         $this->shouldHaveType('Al\Component\QuickBase\Request\Builder\EditionBuilder');
     }
@@ -78,7 +77,6 @@ class EditionBuilderSpec extends ObjectBehavior
                 ))
             )
             ->shouldReturn($this);
-
 
         $this->createRequest('action')
             ->setModel($model)

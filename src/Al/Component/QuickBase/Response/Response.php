@@ -64,8 +64,8 @@ class Response
     /**
      * Get date in the SimpleXMLElement object
      *
-     * @param string $key
-     * @param null|string $type
+     * @param  string      $key
+     * @param  null|string $type
      * @return mixed
      */
     public function getData($key, $type = null)

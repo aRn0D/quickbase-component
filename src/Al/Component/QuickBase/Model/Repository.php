@@ -22,7 +22,7 @@ class Repository
      */
     protected $manager;
 
-    function __construct(Manager $manager)
+    public function __construct(Manager $manager)
     {
         $this->manager = $manager;
     }
@@ -39,7 +39,7 @@ class Repository
     }
 
     /**
-     * @param array $criteria
+     * @param  array $criteria
      * @return mixed
      */
     public function findOneBy(array $criteria = array())
@@ -52,10 +52,10 @@ class Repository
     }
 
     /**
-     * @param array $criteria
-     * @param null $offset
-     * @param null $limit
-     * @param array $sortBy
+     * @param  array $criteria
+     * @param  null  $offset
+     * @param  null  $limit
+     * @param  array $sortBy
      * @return mixed
      */
     public function findBy(array $criteria = array(), $offset = null, $limit = null, array $sortBy = array())
@@ -72,12 +72,12 @@ class Repository
 
     /**
      * @param QueryBuilder $builder
-     * @param array $criteria
+     * @param array        $criteria
      */
     protected function addCriteria(QueryBuilder $builder, array $criteria = array())
     {
         $first = true;
-        foreach($criteria as $field => $value) {
+        foreach ($criteria as $field => $value) {
             if ($first) {
                 $builder->where(new Criteria($field, $value, Criteria::EQUAL));
                 $first = false;
