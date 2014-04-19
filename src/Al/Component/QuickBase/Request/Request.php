@@ -98,7 +98,11 @@ class Request
      */
     public function getParameter($key)
     {
-        return $this->parameters[$key];
+        if ($this->hasParameter($key)) {
+            return $this->parameters[$key];
+        }
+
+        return null;
     }
 
     /**
